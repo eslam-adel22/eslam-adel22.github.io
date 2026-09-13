@@ -526,3 +526,34 @@ img { max-width: 100%; display: block; }
   .bom-table thead th:nth-child(2),
   .bom-table tbody td:nth-child(2) { display: none; }
 }
+/* ============================================
+   IMAGE CROPPING & POSITIONING FIXES
+   ============================================ */
+
+/* 1. صورة العربية: التركيز على الجزء السفلي لأن العربية تحت في الصورة */
+.project-gallery img[src*="car-01"] {
+    object-position: center bottom;
+}
+
+/* 2. صورة التصميم (لاب توب): التركيز في المنتصف تماماً */
+.project-gallery img[src*="car-02"] {
+    object-position: center center;
+}
+
+/* 3. صورة التكريم: التركيز بنسبة 20% من فوق عشان وجوه الأشخاص تظهر */
+.project-gallery img[src*="car-03"] {
+    object-position: center 20%;
+}
+
+/* 4. صورة الفريق: التركيز بنسبة 25% من فوق للمحافظة على ظهور الفريق */
+.project-gallery img[src*="car-04"] {
+    object-position: center 25%;
+}
+
+/* 5. صور مشروع الديناصور: الرسومات (Flowchart / Schematic) الأفضل قراءتها من الأعلى */
+.project-gallery img[src*="dino"] {
+    object-position: center top;
+    
+    /* الصور عبارة عن PNG شفافة، لو مش واضحة على الخلفية الغامقة شيل علامتين الـ Comment من السطر اللي تحت */
+    /* background: #ffffff !important; */
+}
