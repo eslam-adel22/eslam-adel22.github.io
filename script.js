@@ -62,3 +62,40 @@ galleries.forEach(gallery => {
     updateGallery();
   });
 });
+// ============================================
+// Projects Image Slider
+// ============================================
+const galleries = document.querySelectorAll('.project-gallery');
+
+galleries.forEach(gallery => {
+  const images = gallery.querySelectorAll('img');
+  const prevBtn = gallery.querySelector('.prev-btn');
+  const nextBtn = gallery.querySelector('.next-btn');
+  
+  // لو مفيش زراير أو صور في الـ div ده، يتجاهله
+  if (!images.length || !prevBtn || !nextBtn) return;
+
+  let currentIndex = 0;
+
+  const updateGallery = () => {
+    images.forEach((img, index) => {
+      if (index === currentIndex) {
+        img.classList.add('active');
+      } else {
+        img.classList.remove('active');
+      }
+    });
+  };
+
+  prevBtn.addEventListener('click', () => {
+    // لو إحنا في أول صورة ورجعنا لورا، يجيب آخر صورة
+    currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+    updateGallery();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    // لو إحنا في آخر صورة وطلعنا قدام، يجيب أول صورة
+    currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+    updateGallery();
+  });
+});
